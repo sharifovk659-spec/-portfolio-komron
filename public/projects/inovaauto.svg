@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#0a0a0f"/>
+  <rect x="0" y="0" width="800" height="450" fill="url(#bg)" opacity="0.5"/>
+  <rect x="40" y="50" width="720" height="350" rx="16" fill="#151522" stroke="rgba(0,212,255,0.25)" stroke-width="1"/>
+  <text x="60" y="95" fill="#00d4ff" font-family="system-ui,sans-serif" font-size="28" font-weight="700">InovaAuto</text>
+  <rect x="60" y="115" width="140" height="8" rx="4" fill="#252540"/>
+  <rect x="60" y="140" width="200" height="36" rx="8" fill="#1a1a2e" stroke="rgba(0,212,255,0.2)"/>
+  <rect x="280" y="140" width="200" height="36" rx="8" fill="#1a1a2e" stroke="rgba(0,212,255,0.2)"/>
+  <rect x="500" y="140" width="240" height="36" rx="8" fill="url(#btn)"/>
+  <rect x="60" y="200" width="220" height="170" rx="10" fill="#1a1a2e" stroke="rgba(168,85,247,0.2)"/>
+  <rect x="75" y="215" width="190" height="90" rx="6" fill="#252540"/>
+  <path d="M95 290 L115 270 L155 270 L175 290 L165 290 L165 300 L105 300 L105 290 Z" fill="#00d4ff" opacity="0.6"/>
+  <circle cx="115" cy="300" r="10" fill="#333" stroke="#00d4ff"/><circle cx="165" cy="300" r="10" fill="#333" stroke="#00d4ff"/>
+  <rect x="300" y="200" width="220" height="170" rx="10" fill="#1a1a2e" stroke="rgba(168,85,247,0.2)"/>
+  <rect x="315" y="215" width="190" height="90" rx="6" fill="#252540"/>
+  <path d="M335 290 L355 270 L395 270 L415 290 L405 290 L405 300 L345 300 L345 290 Z" fill="#a855f7" opacity="0.6"/>
+  <circle cx="355" cy="300" r="10" fill="#333" stroke="#a855f7"/><circle cx="405" cy="300" r="10" fill="#333" stroke="#a855f7"/>
+  <rect x="540" y="200" width="220" height="170" rx="10" fill="#1a1a2e" stroke="rgba(168,85,247,0.2)"/>
+  <rect x="555" y="215" width="190" height="90" rx="6" fill="#252540"/>
+  <path d="M575 290 L595 270 L635 270 L655 290 L645 290 L645 300 L585 300 L585 290 Z" fill="#00fff5" opacity="0.6"/>
+  <circle cx="595" cy="300" r="10" fill="#333" stroke="#00fff5"/><circle cx="645" cy="300" r="10" fill="#333" stroke="#00fff5"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="450"><stop stop-color="#00d4ff" stop-opacity="0.08"/><stop offset="1" stop-color="#a855f7" stop-opacity="0.08"/></linearGradient>
+    <linearGradient id="btn" x1="500" y1="140" x2="740" y2="176"><stop stop-color="#00d4ff"/><stop offset="1" stop-color="#a855f7"/></linearGradient>
+  </defs>
+</svg>

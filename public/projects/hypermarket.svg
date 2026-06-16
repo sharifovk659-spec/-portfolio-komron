@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#0a0a0f"/>
+  <rect x="0" y="0" width="800" height="450" fill="url(#bg)" opacity="0.5"/>
+  <rect x="40" y="50" width="720" height="350" rx="16" fill="#151522" stroke="rgba(168,85,247,0.25)" stroke-width="1"/>
+  <text x="60" y="95" fill="#a855f7" font-family="system-ui,sans-serif" font-size="28" font-weight="700">HyperMarket</text>
+  <rect x="60" y="115" width="680" height="40" rx="8" fill="#1a1a2e"/>
+  <rect x="75" y="127" width="80" height="16" rx="4" fill="#252540"/>
+  <rect x="170" y="127" width="80" height="16" rx="4" fill="#252540"/>
+  <rect x="265" y="127" width="80" height="16" rx="4" fill="#252540"/>
+  <circle cx="710" cy="135" r="14" fill="url(#cart)" opacity="0.8"/>
+  <rect x="60" y="175" width="210" height="230" rx="10" fill="#1a1a2e" stroke="rgba(0,212,255,0.15)"/>
+  <rect x="75" y="190" width="180" height="120" rx="6" fill="#252540"/>
+  <rect x="75" y="320" width="120" height="12" rx="4" fill="#333"/>
+  <rect x="75" y="340" width="80" height="20" rx="4" fill="url(#price)"/>
+  <rect x="290" y="175" width="210" height="230" rx="10" fill="#1a1a2e" stroke="rgba(0,212,255,0.15)"/>
+  <rect x="305" y="190" width="180" height="120" rx="6" fill="#252540"/>
+  <rect x="305" y="320" width="120" height="12" rx="4" fill="#333"/>
+  <rect x="305" y="340" width="80" height="20" rx="4" fill="url(#price)"/>
+  <rect x="520" y="175" width="210" height="230" rx="10" fill="#1a1a2e" stroke="rgba(0,212,255,0.15)"/>
+  <rect x="535" y="190" width="180" height="120" rx="6" fill="#252540"/>
+  <rect x="535" y="320" width="120" height="12" rx="4" fill="#333"/>
+  <rect x="535" y="340" width="80" height="20" rx="4" fill="url(#price)"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="450"><stop stop-color="#a855f7" stop-opacity="0.08"/><stop offset="1" stop-color="#00d4ff" stop-opacity="0.08"/></linearGradient>
+    <linearGradient id="cart" x1="696" y1="121" x2="724" y2="149"><stop stop-color="#00d4ff"/><stop offset="1" stop-color="#a855f7"/></linearGradient>
+    <linearGradient id="price" x1="0" y1="0" x2="80" y2="20"><stop stop-color="#00d4ff"/><stop offset="1" stop-color="#00fff5"/></linearGradient>
+  </defs>
+</svg>
