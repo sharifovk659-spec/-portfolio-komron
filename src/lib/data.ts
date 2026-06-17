@@ -1,6 +1,6 @@
 export const personalInfo = {
   name: "Komron Sharifov",
-  title: "Full-Stack Web Developer",
+  title: "Full-Stack Developer",
   tagline: "Building modern web platforms with clean code, high speed, and reliable security.",
   email: "komron.sharifov@email.com",
   location: "Tashkent, Uzbekistan",
@@ -11,8 +11,7 @@ export const personalInfo = {
     twitter: "https://twitter.com/komronsharifov",
     telegram: "https://t.me/komronsharifov",
   },
-  /** Put your photo at public/profile.jpg (recommended 800x800, JPG or PNG) */
-  profilePhoto: "/profile.jpg",
+  profilePhoto: "/profile.png",
   stats: [
     { key: "years" as const, value: 5, suffix: "+" },
     { key: "projects" as const, value: 40, suffix: "+" },

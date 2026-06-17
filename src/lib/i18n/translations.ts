@@ -54,6 +54,11 @@ const en = {
     p1: "Hi, I'm {name} — a full-stack developer with a passion for building beautiful, performant web applications. I specialize in creating immersive user experiences using modern technologies.",
     p2: "With over 5 years of experience, I've helped startups and enterprises transform their digital presence. I believe in writing clean, maintainable code and delivering products that exceed expectations.",
     traits: ["Problem Solver", "Team Player", "Fast Learner", "Detail Oriented"],
+    cardStats: {
+      years: "Years Experience",
+      projects: "Projects Done",
+      codeLines: "Lines of Code",
+    },
   },
   skills: {
     subtitle: "Skills",
@@ -181,6 +186,11 @@ const ru: TranslationKeys = {
     p1: "Привет, я {name} — full-stack разработчик, увлечённый созданием красивых и быстрых веб-приложений. Специализируюсь на immersive user experience.",
     p2: "Более 5 лет опыта. Помогал стартапам и компаниям трансформировать цифровое присутствие. Пишу чистый код и превосхожу ожидания.",
     traits: ["Решаю проблемы", "Командный игрок", "Быстро учусь", "Внимание к деталям"],
+    cardStats: {
+      years: "Лет опыта",
+      projects: "Проектов сдано",
+      codeLines: "Строк кода",
+    },
   },
   skills: {
     subtitle: "Навыки",
@@ -308,6 +318,11 @@ const tg: TranslationKeys = {
     p1: "Салом, ман {name} — full-stack барномасоз, ки барои сохтани веб-и зебо ва теззабон шавқ дорам. Дар UX-и ҷолиб ихтисос дорам.",
     p2: "Зиёда аз 5 сол таҷриба. Ба стартапҳо ва ширкатҳо кумак кардам, ки ҳузури digital-и худро такмил диҳанд.",
     traits: ["Ҳалли мушкил", "Кор дар даста", "Зуд омӯхтан", "Диққат ба тафсилот"],
+    cardStats: {
+      years: "Сол таҷриба",
+      projects: "Лоиҳо анҷом дода",
+      codeLines: "Сатр код навишта шуд",
+    },
   },
   skills: {
     subtitle: "Малакаҳо",
