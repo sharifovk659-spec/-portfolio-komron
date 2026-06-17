@@ -32,7 +32,7 @@ const en = {
     testimonials: "Reviews",
     contact: "Contact",
   },
-  preloader: { loading: "Loading" },
+  preloader: { loading: "Loading", loadingExperience: "Loading experience..." },
   hero: {
     availability: "Available for Freelance & Full-Time Projects",
     viewWork: "View My Work",
@@ -165,7 +165,7 @@ const ru: TranslationKeys = {
     testimonials: "Отзывы",
     contact: "Контакты",
   },
-  preloader: { loading: "Загрузка" },
+  preloader: { loading: "Загрузка", loadingExperience: "Загрузка сайта..." },
   hero: {
     availability: "Доступен для freelance и full-time проектов",
     viewWork: "Мои работы",
@@ -298,7 +298,7 @@ const tg: TranslationKeys = {
     testimonials: "Шарҳҳо",
     contact: "Тамос",
   },
-  preloader: { loading: "Бор шуда истодааст" },
+  preloader: { loading: "Бор шуда истодааст", loadingExperience: "Сайт бор мешавад..." },
   hero: {
     availability: "Дастрас барои Freelance ва Full-Time лоиҳаҳо",
     viewWork: "Кори ман",

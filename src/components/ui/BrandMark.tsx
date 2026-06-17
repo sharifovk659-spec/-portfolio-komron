@@ -1,7 +1,8 @@
 import { personalInfo } from "@/lib/data";
 
 type BrandMarkProps = {
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
+  layout?: "horizontal" | "stacked";
   showText?: boolean;
   className?: string;
 };
@@ -25,18 +26,32 @@ const sizes = {
     text: "text-xl sm:text-2xl",
     gap: "gap-3",
   },
+  xl: {
+    box: "h-16 w-16 sm:h-20 sm:w-20",
+    icon: "text-2xl sm:text-3xl",
+    text: "text-2xl sm:text-3xl",
+    gap: "gap-4",
+  },
 };
 
-export default function BrandMark({ size = "md", showText = true, className = "" }: BrandMarkProps) {
+export default function BrandMark({
+  size = "md",
+  layout = "horizontal",
+  showText = true,
+  className = "",
+}: BrandMarkProps) {
   const s = sizes[size];
+  const isStacked = layout === "stacked";
 
   return (
-    <div className={`flex items-center ${s.gap} ${className}`}>
+    <div
+      className={`flex ${isStacked ? "flex-col items-center" : "items-center"} ${s.gap} ${className}`}
+    >
       <span
-        className={`flex ${s.box} shrink-0 items-center justify-center rounded-lg font-bold text-white ${s.icon}`}
+        className={`flex ${s.box} shrink-0 items-center justify-center rounded-xl font-bold text-white ${s.icon}`}
         style={{
           background: "linear-gradient(135deg, #00d4ff, #a855f7)",
-          boxShadow: "0 4px 18px rgba(0,212,255,0.35), inset 0 1px 0 rgba(255,255,255,0.25)",
+          boxShadow: "0 4px 24px rgba(0,212,255,0.4), inset 0 1px 0 rgba(255,255,255,0.25)",
         }}
         aria-hidden
       >
