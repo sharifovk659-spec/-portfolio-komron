@@ -1,5 +1,7 @@
 export const personalInfo = {
   name: "Komron Sharifov",
+  brandName: "Komron",
+  brandSuffix: ".dev",
   title: "Full-Stack Developer",
   tagline: "Building modern web platforms with clean code, high speed, and reliable security.",
   email: "komron.sharifov@email.com",

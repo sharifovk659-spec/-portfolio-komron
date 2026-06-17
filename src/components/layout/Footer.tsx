@@ -24,7 +24,7 @@ export default function Footer() {
             <Logo size={44} className="shrink-0" />
             <div>
             <p className="font-display text-xl font-semibold">
-              {personalInfo.name.split(" ")[0]}<span className="gradient-text">.</span>
+              {personalInfo.brandName}<span className="gradient-text">{personalInfo.brandSuffix}</span>
             </p>
             <p className="mt-2 text-sm text-white/45">
               © {new Date().getFullYear()} {personalInfo.name}. {t.footer.rights}
