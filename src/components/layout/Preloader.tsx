@@ -55,9 +55,9 @@ export default function Preloader() {
             className="absolute h-40 w-40 rounded-full border-2 border-transparent border-t-neon-cyan border-r-neon-purple sm:h-48 sm:w-48"
           />
 
-          <div className="preloader-logo-box relative flex flex-col items-center gap-3">
+          <div className="preloader-logo-box relative flex flex-col items-center gap-2.5">
             <span
-              className="flex h-11 w-11 items-center justify-center rounded-xl text-lg font-bold text-white sm:h-14 sm:w-14 sm:text-xl"
+              className="flex h-10 w-10 items-center justify-center rounded-xl text-base font-bold text-white sm:h-12 sm:w-12 sm:text-lg"
               style={{
                 background: "linear-gradient(135deg, #00d4ff, #a855f7)",
                 boxShadow: "0 4px 24px rgba(0,212,255,0.4), inset 0 1px 0 rgba(255,255,255,0.25)",
@@ -66,7 +66,7 @@ export default function Preloader() {
             >
               {"</>"}
             </span>
-            <p className="font-display text-xl font-semibold sm:text-2xl">
+            <p className="font-display text-lg font-semibold sm:text-xl">
               <span className="text-white">{personalInfo.brandName}</span>
               <span className="gradient-text">{personalInfo.brandSuffix}</span>
             </p>

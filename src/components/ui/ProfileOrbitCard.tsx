@@ -10,10 +10,10 @@ import { useMotionPrefs } from "@/hooks/useMotionPrefs";
 const ORBIT_DURATION = 28;
 
 const orbitSkills = [
-  { label: "PHP 8", Icon: SiPhp, color: "#8892BF", angle: 225 },
-  { label: "JavaScript", Icon: SiJavascript, color: "#F7DF1E", angle: 315 },
-  { label: "MySQL", Icon: SiMysql, color: "#4479A1", angle: 135 },
-  { label: "React", Icon: SiReact, color: "#61DAFB", angle: 45 },
+  { label: "PHP 8", Icon: SiPhp, color: "#8892BF", angle: 0 },
+  { label: "JavaScript", Icon: SiJavascript, color: "#F7DF1E", angle: 90 },
+  { label: "MySQL", Icon: SiMysql, color: "#4479A1", angle: 180 },
+  { label: "React", Icon: SiReact, color: "#61DAFB", angle: 270 },
 ] as const;
 
 const skillTags = ["PHP 8", "MySQL", "JavaScript", "HTML / CSS", "UI/UX"];
@@ -80,7 +80,7 @@ export default function ProfileOrbitCard() {
               style={{ transform: `rotate(${angle}deg) translateY(-${orbitRadius}px)` }}
             >
               <div
-                className={`flex -translate-x-1/2 flex-col items-center gap-1.5 ${animate ? "profile-orbit-counter" : ""}`}
+                className={`flex -translate-x-1/2 ${animate ? "profile-orbit-counter" : ""}`}
                 style={animate ? { animationDuration: `${ORBIT_DURATION}s` } : undefined}
               >
                 <div
@@ -92,9 +92,6 @@ export default function ProfileOrbitCard() {
                 >
                   <Icon size={22} style={{ color }} />
                 </div>
-                <span className="whitespace-nowrap text-[10px] font-medium text-white/70 sm:text-xs">
-                  {label}
-                </span>
               </div>
             </div>
           ))}
