@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useLenisScroll } from "@/components/layout/SmoothScroll";
 import { useLanguage } from "@/hooks/useLanguage";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
-import Logo from "@/components/ui/Logo";
+import BrandMark from "@/components/ui/BrandMark";
 
 export default function Navbar() {
   const { scrollTo } = useLenisScroll();
@@ -30,7 +30,7 @@ export default function Navbar() {
       className="fixed top-0 right-0 left-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4 lg:px-8"
     >
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between gap-2 rounded-2xl px-2.5 py-2 transition-all duration-500 sm:gap-3 sm:px-4 sm:py-3"
+        className="mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-2xl px-3 py-2.5 transition-all duration-500 sm:px-5 sm:py-3"
         style={{
           background: scrolled
             ? "linear-gradient(135deg, rgba(12,14,28,0.95), rgba(8,10,22,0.98))"
@@ -50,10 +50,10 @@ export default function Navbar() {
           }}
           className="group shrink-0 transition-transform group-hover:scale-[1.02]"
         >
-          <Logo variant="full" priority />
+          <BrandMark size="md" />
         </a>
 
-        <div className="flex items-center gap-1.5 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
           <a
             href="#contact"
@@ -61,7 +61,7 @@ export default function Navbar() {
               e.preventDefault();
               handleNavClick("#contact");
             }}
-            className="btn-premium shrink-0 rounded-full px-3 py-1.5 text-[10px] font-semibold sm:px-5 sm:py-2.5 sm:text-sm"
+            className="btn-premium shrink-0 rounded-full px-4 py-2 text-xs font-semibold sm:px-5 sm:py-2.5 sm:text-sm"
           >
             <span className="hidden min-[420px]:inline">{t.nav.hireMe}</span>
             <span className="min-[420px]:hidden">{t.nav.hireMeShort}</span>

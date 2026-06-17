@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter, FaTelegramPlane } from "react-icons/fa";
 import { personalInfo } from "@/lib/data";
 import { useLanguage } from "@/hooks/useLanguage";
-import Logo from "@/components/ui/Logo";
+import BrandMark from "@/components/ui/BrandMark";
 
 const socialIcons = [
   { href: personalInfo.social.github, icon: FaGithub, label: "GitHub" },
@@ -21,7 +21,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
           <div className="flex flex-col items-center gap-3 text-center md:flex-row md:items-center md:gap-6 md:text-left">
-            <Logo variant="full" className="h-9 sm:h-10" />
+            <BrandMark size="sm" />
             <p className="text-sm text-white/45">
               © {new Date().getFullYear()} {personalInfo.name}. {t.footer.rights}
             </p>
