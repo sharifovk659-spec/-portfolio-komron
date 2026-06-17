@@ -32,7 +32,6 @@ export default function Footer() {
               </motion.a>
             ))}
           </div>
-          <p className="text-sm text-white/35">{t.footer.built}</p>
         </div>
       </div>
     </footer>

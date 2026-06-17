@@ -12,7 +12,7 @@ export const personalInfo = {
     linkedin: "https://www.linkedin.com/in/komron-sharifov-15a539417",
     instagram: "https://instagram.com/komronn.dev",
   },
-  whatsapp: "992100944554",
+  whatsapp: "992100944545",
   profilePhoto: "/profile.png",
   logo: "/logo.png",
   stats: [
