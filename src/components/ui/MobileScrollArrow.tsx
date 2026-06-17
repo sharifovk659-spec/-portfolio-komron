@@ -7,14 +7,17 @@ import { useLenisScroll } from "@/components/layout/SmoothScroll";
 type ArrowDirection = "up" | "down";
 
 const SIZE = 44;
-const CX = SIZE / 2;
-const CY = SIZE / 2;
-const R = 20;
+const CX = 22;
+const CY = 22;
+const CIRCLE_R = 20;
+
+const ARROW_PATH = {
+  down: `M ${CX} 14 L ${CX} 26 L ${CX - 6} 21 L ${CX} 26 L ${CX + 6} 21`,
+  up: `M ${CX} 30 L ${CX} 18 L ${CX - 6} 23 L ${CX} 18 L ${CX + 6} 23`,
+} as const;
 
 function ScrollArrowGraphic({ direction }: { direction: ArrowDirection }) {
-  const isUp = direction === "up";
-  const arrowY1 = isUp ? CY - 5 : CY + 5;
-  const arrowY2 = isUp ? CY + 5 : CY - 5;
+  const path = ARROW_PATH[direction];
 
   return (
     <svg
@@ -27,41 +30,32 @@ function ScrollArrowGraphic({ direction }: { direction: ArrowDirection }) {
       <circle
         cx={CX}
         cy={CY}
-        r={R}
+        r={CIRCLE_R}
         fill="rgba(10, 12, 24, 0.92)"
         stroke="rgba(255,255,255,0.15)"
-        strokeWidth={1.5}
-      />
-
-      <motion.circle
-        cx={CX}
-        cy={CY}
-        r={R}
-        fill="none"
-        stroke="white"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        transform={`rotate(-90 ${CX} ${CY})`}
-        initial={{ pathLength: 0.08, opacity: 0.25 }}
-        animate={{
-          pathLength: [0.08, 1, 0.08],
-          opacity: [0.25, 0.95, 0.25],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 1.8,
-          ease: "easeInOut",
-        }}
+        strokeWidth={1}
       />
 
       <path
-        d={`M ${CX} ${arrowY1} L ${CX} ${arrowY2} M ${CX - 5} ${CY} L ${CX} ${arrowY1} L ${CX + 5} ${CY}`}
+        d={path}
         stroke="white"
         strokeWidth={1.8}
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
-        opacity={0.85}
+        opacity={0.2}
+      />
+
+      <motion.path
+        d={path}
+        stroke="white"
+        strokeWidth={1.8}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+        initial={{ pathLength: 0, opacity: 0.3 }}
+        animate={{ pathLength: [0, 1, 0], opacity: [0.3, 1, 0.3] }}
+        transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
       />
     </svg>
   );
@@ -132,9 +126,9 @@ export default function MobileScrollArrow() {
       <AnimatePresence mode="wait">
         <motion.div
           key={arrowDir}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, y: isUp ? 4 : -4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: isUp ? -4 : 4 }}
           transition={{ duration: 0.2 }}
         >
           <ScrollArrowGraphic direction={arrowDir} />
