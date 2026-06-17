@@ -10,6 +10,7 @@ import Footer from "@/components/layout/Footer";
 import SectionNav from "@/components/layout/SectionNav";
 import AnimatedBackground from "@/components/ui/AnimatedBackground";
 import MouseGlow from "@/components/effects/MouseGlow";
+import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,8 +38,9 @@ export const metadata: Metadata = {
     images: ["/logo.png"],
   },
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
 };
 
@@ -60,6 +62,7 @@ export default function RootLayout({
             <SectionNav />
             <main className="relative space-y-2 sm:space-y-4">{children}</main>
             <Footer />
+            <WhatsAppFloat />
           </SmoothScroll>
           </MotionProvider>
         </LanguageProvider>
