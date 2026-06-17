@@ -12,6 +12,7 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 import GlassCard from "@/components/ui/GlassCard";
 import { personalInfo } from "@/lib/data";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useMotionPrefs } from "@/hooks/useMotionPrefs";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,8 +53,15 @@ const orbitApps = [
 
 export default function About() {
   const { t } = useLanguage();
+  const { isMobile } = useMotionPrefs();
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const photoSize = isMobile ? 150 : 186;
+  const photoSizeLg = isMobile ? 150 : 218;
+  const orbitSize = isMobile ? 56 : 68;
+  const orbitIconSize = isMobile ? 38 : 50;
+  const orbitIconSizeLg = isMobile ? 40 : 52;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -82,13 +90,15 @@ export default function About() {
       <SectionHeading subtitle={t.about.subtitle} title={t.about.title} description={t.about.description} />
 
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-        <div ref={imageRef} className="relative mx-auto w-full max-w-md lg:mx-0">
+        <div ref={imageRef} className="about-profile-wrap relative mx-auto w-full max-w-[280px] sm:max-w-md lg:mx-0 lg:max-w-md">
           <div className="gradient-border glow-blue relative aspect-square overflow-hidden rounded-3xl">
             <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/25 via-dark-700 to-neon-purple/25" />
-            <div className="absolute inset-0 flex items-center justify-center p-8">
+            <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-8">
               <div
-                className="relative h-[186px] w-[186px] overflow-hidden rounded-full sm:h-[218px] sm:w-[218px]"
+                className="relative overflow-hidden rounded-full"
                 style={{
+                  width: isMobile ? photoSize : photoSizeLg,
+                  height: isMobile ? photoSize : photoSizeLg,
                   boxShadow:
                     "0 0 0 3px rgba(0, 212, 255, 0.5), 0 0 30px rgba(0, 212, 255, 0.35), 0 0 60px rgba(0, 212, 255, 0.15)",
                 }}
@@ -98,7 +108,7 @@ export default function About() {
                   alt={personalInfo.name}
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 640px) 186px, 218px"
+                  sizes={`(max-width: 640px) ${photoSize}px, ${photoSizeLg}px`}
                   priority
                   unoptimized
                 />
@@ -107,10 +117,13 @@ export default function About() {
             <div className="absolute inset-0 bg-gradient-to-t from-dark-950/90 via-transparent to-transparent" />
           </div>
 
-          {orbitApps.map(({ id, Icon, color, position, iconSize, duration }) => (
+          {orbitApps.map(({ id, Icon, color, position, duration }) => {
+            const iconSize = id === "php" || id === "react" ? orbitIconSizeLg : orbitIconSize;
+            return (
             <div
               key={id}
-              className={`${position} flex h-[68px] w-[68px] items-center justify-center rounded-full border-2 border-dashed border-neon-blue/50 bg-dark-900/90`}
+              className={`${position} flex items-center justify-center rounded-full border-2 border-dashed border-neon-blue/50 bg-dark-900/90`}
+              style={{ width: orbitSize, height: orbitSize }}
             >
               <motion.div
                 animate={{ rotate: 360 }}
@@ -120,25 +133,26 @@ export default function About() {
                 <Icon size={iconSize} style={{ color }} />
               </motion.div>
             </div>
-          ))}
+          );
+          })}
         </div>
 
         <div ref={contentRef} className="space-y-6">
           <p className="text-lg leading-relaxed text-white/75">{p1}</p>
           <p className="leading-relaxed text-white/55">{t.about.p2}</p>
 
-          <div className="flex flex-wrap gap-4 pt-2">
+          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:gap-4">
             {[
               { icon: HiLocationMarker, text: personalInfo.location },
               { icon: HiMail, text: personalInfo.email },
             ].map(({ icon: Icon, text }) => (
               <div
                 key={text}
-                className="flex items-center gap-2.5 rounded-2xl border border-white/10 px-4 py-2.5 text-sm text-white/60"
+                className="flex min-w-0 items-center gap-2.5 rounded-2xl border border-white/10 px-3 py-2.5 text-xs text-white/60 sm:px-4 sm:text-sm"
                 style={{ background: "rgba(255,255,255,0.03)" }}
               >
-                <Icon className="text-neon-cyan" size={18} />
-                {text}
+                <Icon className="shrink-0 text-neon-cyan" size={18} />
+                <span className="min-w-0 break-all">{text}</span>
               </div>
             ))}
           </div>

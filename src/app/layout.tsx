@@ -60,7 +60,7 @@ export default function RootLayout({
             <MouseGlow />
             <Navbar />
             <SectionNav />
-            <main className="relative space-y-2 sm:space-y-4">{children}</main>
+            <main className="relative space-y-2 pb-20 sm:space-y-4 sm:pb-0">{children}</main>
             <Footer />
             <WhatsAppFloat />
           </SmoothScroll>

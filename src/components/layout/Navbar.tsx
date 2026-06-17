@@ -1,20 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLenisScroll } from "@/components/layout/SmoothScroll";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
 import BrandMark from "@/components/ui/BrandMark";
 
 export default function Navbar() {
-  const { scrollTo } = useLenisScroll();
+  const { scrollTo, subscribeScroll } = useLenisScroll();
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return subscribeScroll((scrollY) => {
+      setScrolled(scrollY > 50);
+
+      const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+      if (!isDesktop) {
+        setVisible(true);
+        lastScrollY.current = scrollY;
+        return;
+      }
+
+      if (scrollY < 80) {
+        setVisible(true);
+      } else if (scrollY > lastScrollY.current + 8) {
+        setVisible(false);
+      } else if (scrollY < lastScrollY.current - 8) {
+        setVisible(true);
+      }
+
+      lastScrollY.current = scrollY;
+    });
+  }, [subscribeScroll]);
 
   const handleNavClick = (href: string) => {
     scrollTo(href);
@@ -23,12 +42,13 @@ export default function Navbar() {
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 2.6, ease: [0.22, 1, 0.36, 1] }}
+      animate={{ y: visible ? 0 : "-120%", opacity: visible ? 1 : 0 }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-0 right-0 left-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4 lg:px-8"
+      style={{ pointerEvents: visible ? "auto" : "none" }}
     >
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-2xl px-3 py-2.5 transition-all duration-500 sm:px-5 sm:py-3"
+        className="mx-auto flex max-w-7xl items-center justify-between gap-2 rounded-2xl px-2.5 py-2 transition-all duration-500 sm:gap-3 sm:px-5 sm:py-3"
         style={{
           background: scrolled
             ? "linear-gradient(135deg, rgba(12,14,28,0.95), rgba(8,10,22,0.98))"
@@ -46,12 +66,13 @@ export default function Navbar() {
             e.preventDefault();
             handleNavClick("#home");
           }}
-          className="group shrink-0 transition-transform group-hover:scale-[1.02]"
+          className="group min-w-0 shrink transition-transform group-hover:scale-[1.02]"
         >
-          <BrandMark size="md" />
+          <BrandMark size="sm" className="sm:hidden" />
+          <BrandMark size="md" className="hidden sm:flex" />
         </a>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
         </div>
       </nav>

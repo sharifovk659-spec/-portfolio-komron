@@ -9,23 +9,40 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface LenisContextValue {
   scrollTo: (target: string, offset?: number) => void;
+  subscribeScroll: (listener: (scrollY: number) => void) => () => void;
 }
 
 const LenisContext = createContext<LenisContextValue | null>(null);
 
+const fallbackScroll: LenisContextValue = {
+  scrollTo: (target: string) => {
+    document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
+  },
+  subscribeScroll: (listener) => {
+    const onScroll = () => listener(window.scrollY);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  },
+};
+
 export function useLenisScroll() {
   const ctx = useContext(LenisContext);
-  return (
-    ctx ?? {
-      scrollTo: (target: string) => {
-        document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
-      },
-    }
-  );
+  return ctx ?? fallbackScroll;
 }
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
+  const scrollListeners = useRef(new Set<(scrollY: number) => void>());
+
+  const subscribeScroll = useCallback((listener: (scrollY: number) => void) => {
+    scrollListeners.current.add(listener);
+    listener(window.scrollY);
+    return () => scrollListeners.current.delete(listener);
+  }, []);
+
+  const notifyScroll = useCallback((scrollY: number) => {
+    scrollListeners.current.forEach((listener) => listener(scrollY));
+  }, []);
 
   const scrollTo = useCallback((target: string, offset = -80) => {
     const el = document.querySelector(target) as HTMLElement | null;
@@ -40,7 +57,11 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     const isMobile = window.matchMedia("(max-width: 767px)").matches;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (isMobile || reducedMotion) return;
+    if (isMobile || reducedMotion) {
+      const onScroll = () => notifyScroll(window.scrollY);
+      window.addEventListener("scroll", onScroll, { passive: true });
+      return () => window.removeEventListener("scroll", onScroll);
+    }
 
     const lenis = new Lenis({
       duration: 1.2,
@@ -50,7 +71,10 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     });
 
     lenisRef.current = lenis;
-    lenis.on("scroll", ScrollTrigger.update);
+    lenis.on("scroll", (event) => {
+      ScrollTrigger.update();
+      notifyScroll(event.scroll);
+    });
 
     let frameId = 0;
     const raf = (time: number) => {
@@ -65,7 +89,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       lenisRef.current = null;
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [notifyScroll]);
 
-  return <LenisContext.Provider value={{ scrollTo }}>{children}</LenisContext.Provider>;
+  return <LenisContext.Provider value={{ scrollTo, subscribeScroll }}>{children}</LenisContext.Provider>;
 }

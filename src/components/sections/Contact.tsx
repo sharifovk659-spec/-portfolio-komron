@@ -39,13 +39,13 @@ export default function Contact() {
           <GlassCard>
             <h3 className="font-display text-lg font-semibold gradient-text">{t.contact.info}</h3>
             <div className="mt-6 space-y-4">
-              <div className="flex items-center gap-3 text-sm text-white/70">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neon-blue/10"><HiMail className="text-neon-cyan" size={18} /></div>
-                {personalInfo.email}
+              <div className="flex min-w-0 items-center gap-3 text-sm text-white/70">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-neon-blue/10"><HiMail className="text-neon-cyan" size={18} /></div>
+                <span className="min-w-0 break-all">{personalInfo.email}</span>
               </div>
-              <div className="flex items-center gap-3 text-sm text-white/70">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neon-purple/10"><HiLocationMarker className="text-neon-purple" size={18} /></div>
-                {personalInfo.location}
+              <div className="flex min-w-0 items-center gap-3 text-sm text-white/70">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-neon-purple/10"><HiLocationMarker className="text-neon-purple" size={18} /></div>
+                <span className="min-w-0">{personalInfo.location}</span>
               </div>
             </div>
             <div className="mt-8">
