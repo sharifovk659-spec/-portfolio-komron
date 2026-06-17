@@ -29,11 +29,11 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div ref={rootRef} className="relative shrink-0">
+    <div ref={rootRef} className="relative">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="flex items-center gap-1 rounded-lg bg-gradient-to-r from-neon-blue to-neon-purple px-3 py-2 text-xs font-bold tracking-wide text-white shadow-[0_0_14px_rgba(0,212,255,0.35)] transition-all sm:px-3.5 sm:text-sm"
+        className="flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-neon-blue to-neon-purple px-3 py-2 text-xs font-bold tracking-wide text-white shadow-[0_0_14px_rgba(0,212,255,0.35)] transition-all sm:px-3.5 sm:text-sm"
         aria-expanded={open}
         aria-haspopup="listbox"
       >

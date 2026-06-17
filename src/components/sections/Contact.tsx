@@ -3,18 +3,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { HiMail, HiLocationMarker, HiPaperAirplane } from "react-icons/hi";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import GlassCard from "@/components/ui/GlassCard";
 import { personalInfo } from "@/lib/data";
 import { useLanguage } from "@/hooks/useLanguage";
-
-const socialLinks = [
-  { href: personalInfo.social.github, icon: FaGithub, label: "GitHub" },
-  { href: personalInfo.social.linkedin, icon: FaLinkedin, label: "LinkedIn" },
-  { href: personalInfo.social.instagram, icon: FaInstagram, label: "Instagram" },
-];
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -46,16 +39,6 @@ export default function Contact() {
               <div className="flex min-w-0 items-center gap-3 text-sm text-white/70">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-neon-purple/10"><HiLocationMarker className="text-neon-purple" size={18} /></div>
                 <span className="min-w-0">{personalInfo.location}</span>
-              </div>
-            </div>
-            <div className="mt-8">
-              <p className="mb-4 text-sm text-white/45">{t.contact.follow}</p>
-              <div className="flex gap-3">
-                {socialLinks.map(({ href, icon: Icon, label }) => (
-                  <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} whileHover={{ scale: 1.1, y: -3 }} className="premium-card flex h-11 w-11 items-center justify-center !p-0 text-white/60 hover:text-neon-cyan">
-                    <Icon size={18} />
-                  </motion.a>
-                ))}
               </div>
             </div>
           </GlassCard>
