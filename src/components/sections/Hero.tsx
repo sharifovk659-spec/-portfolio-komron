@@ -28,7 +28,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative flex min-h-screen items-center justify-center section-padding pt-28 sm:pt-32">
+    <section id="home" className="relative flex min-h-screen items-center justify-center section-padding pt-24 sm:pt-32">
       <FloatingTechIcons />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-neon-blue/5 via-transparent to-transparent" />
 
@@ -51,7 +51,7 @@ export default function Hero() {
           {t.hero.availability}
         </motion.div>
 
-        <h1 ref={titleRef} className="font-display text-4xl font-bold tracking-tight sm:text-6xl lg:text-8xl" style={{ perspective: "1000px" }}>
+        <h1 ref={titleRef} className="font-display text-3xl font-bold tracking-tight sm:text-6xl lg:text-8xl" style={{ perspective: "1000px" }}>
           {personalInfo.name.split("").map((char, i) => (
             <span key={i} className="char inline-block" style={{ transformStyle: "preserve-3d" }}>
               {char === " " ? "\u00A0" : char}

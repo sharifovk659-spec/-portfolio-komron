@@ -7,7 +7,6 @@ import { personalInfo } from "@/lib/data";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useMotionPrefs } from "@/hooks/useMotionPrefs";
 
-const ORBIT_RADIUS = 132;
 const ORBIT_DURATION = 28;
 
 const orbitSkills = [
@@ -27,8 +26,10 @@ const cardStats = [
 
 export default function ProfileOrbitCard() {
   const { t } = useLanguage();
-  const { reducedMotion } = useMotionPrefs();
+  const { reducedMotion, isMobile } = useMotionPrefs();
   const animate = !reducedMotion;
+  const orbitRadius = isMobile ? 100 : 132;
+  const photoSize = isMobile ? "h-[120px] w-[120px]" : "h-[148px] w-[148px] sm:h-[160px] sm:w-[160px]";
 
   return (
     <div className="profile-orbit-card relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl p-6 sm:max-w-md sm:p-8">
@@ -36,7 +37,7 @@ export default function ProfileOrbitCard() {
       <div className="pointer-events-none absolute -top-16 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-neon-blue/20 blur-3xl" />
       <div className="pointer-events-none absolute right-0 bottom-0 h-24 w-24 rounded-full bg-neon-purple/15 blur-2xl" />
 
-      <div className="relative mx-auto aspect-square w-full max-w-[300px]">
+      <div className="relative mx-auto aspect-square w-full max-w-[260px] sm:max-w-[300px]">
         <svg
           aria-hidden
           className="pointer-events-none absolute inset-0 h-full w-full"
@@ -45,7 +46,7 @@ export default function ProfileOrbitCard() {
           <circle
             cx="150"
             cy="150"
-            r={ORBIT_RADIUS}
+            r={orbitRadius}
             fill="none"
             stroke="rgba(0, 212, 255, 0.18)"
             strokeWidth="1"
@@ -54,7 +55,7 @@ export default function ProfileOrbitCard() {
           <circle
             cx="150"
             cy="150"
-            r={ORBIT_RADIUS - 28}
+            r={orbitRadius - 28}
             fill="none"
             stroke="rgba(0, 212, 255, 0.08)"
             strokeWidth="1"
@@ -62,8 +63,8 @@ export default function ProfileOrbitCard() {
           />
           {[0, 90, 180, 270].map((deg) => {
             const rad = (deg * Math.PI) / 180;
-            const x = 150 + Math.cos(rad) * ORBIT_RADIUS;
-            const y = 150 + Math.sin(rad) * ORBIT_RADIUS;
+            const x = 150 + Math.cos(rad) * orbitRadius;
+            const y = 150 + Math.sin(rad) * orbitRadius;
             return <circle key={deg} cx={x} cy={y} r="3" fill="rgba(0, 212, 255, 0.5)" />;
           })}
         </svg>
@@ -76,7 +77,7 @@ export default function ProfileOrbitCard() {
             <div
               key={label}
               className="absolute top-1/2 left-1/2 h-0 w-0"
-              style={{ transform: `rotate(${angle}deg) translateY(-${ORBIT_RADIUS}px)` }}
+              style={{ transform: `rotate(${angle}deg) translateY(-${orbitRadius}px)` }}
             >
               <div
                 className={`flex -translate-x-1/2 flex-col items-center gap-1.5 ${animate ? "profile-orbit-counter" : ""}`}
@@ -101,7 +102,7 @@ export default function ProfileOrbitCard() {
 
         <div className="absolute inset-0 flex items-center justify-center">
           <div
-            className="relative h-[148px] w-[148px] overflow-hidden rounded-full sm:h-[160px] sm:w-[160px]"
+            className={`relative overflow-hidden rounded-full ${photoSize}`}
             style={{
               boxShadow:
                 "0 0 0 3px rgba(0, 212, 255, 0.5), 0 0 30px rgba(0, 212, 255, 0.35), 0 0 60px rgba(0, 212, 255, 0.15)",

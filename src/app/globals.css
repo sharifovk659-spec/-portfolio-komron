@@ -409,4 +409,25 @@
   .premium-card {
     backdrop-filter: blur(12px);
   }
+
+  .section-padding {
+    @apply px-3 py-12;
+  }
+
+  .section-inner {
+    @apply p-4;
+  }
+
+  .profile-orbit-card {
+    padding: 1.25rem;
+  }
+
+  .profile-orbit-ring .flex.h-12 {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+
+  .profile-orbit-ring span.whitespace-nowrap {
+    font-size: 9px;
+  }
 }

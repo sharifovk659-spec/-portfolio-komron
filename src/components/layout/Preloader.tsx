@@ -35,8 +35,8 @@ export default function Preloader() {
           <div className="noise-overlay absolute inset-0" />
           <div className="preloader-ring absolute h-44 w-44 rounded-full border border-neon-blue/20 sm:h-52 sm:w-52" />
           <motion.div animate={{ rotate: 360 }} transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }} className="absolute h-48 w-48 rounded-full border-2 border-transparent border-t-neon-cyan border-r-neon-purple sm:h-56 sm:w-56" />
-          <div className="preloader-logo-box relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-2xl sm:h-32 sm:w-32" style={{ background: "linear-gradient(135deg, rgba(0,212,255,0.15), rgba(168,85,247,0.15))", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 0 60px rgba(0,212,255,0.35)" }}>
-            <Logo size={96} priority className="h-full w-full" />
+          <div className="preloader-logo-box relative flex items-center justify-center px-4 py-3">
+            <Logo variant="full" priority className="h-10 sm:h-12" />
           </div>
           <p className="mt-10 text-xs tracking-[0.4em] text-white/35 uppercase">{t.preloader.loading}</p>
           <div className="mt-5 h-0.5 w-52 overflow-hidden rounded-full bg-white/10 sm:w-64">

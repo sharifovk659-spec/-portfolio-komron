@@ -19,6 +19,7 @@ const en = {
     testimonials: "Reviews",
     contact: "Contact",
     hireMe: "Hire Me",
+    hireMeShort: "Hire",
   },
   sectionNav: {
     hero: "Hero",
@@ -151,6 +152,7 @@ const ru: TranslationKeys = {
     testimonials: "Отзывы",
     contact: "Контакты",
     hireMe: "Нанять меня",
+    hireMeShort: "Связь",
   },
   sectionNav: {
     hero: "Главная",
@@ -283,6 +285,7 @@ const tg: TranslationKeys = {
     testimonials: "Шарҳҳо",
     contact: "Тамос",
     hireMe: "Истифода баред",
+    hireMeShort: "Тамос",
   },
   sectionNav: {
     hero: "Асосӣ",
