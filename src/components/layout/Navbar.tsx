@@ -6,6 +6,7 @@ import { personalInfo } from "@/lib/data";
 import { useLenisScroll } from "@/components/layout/SmoothScroll";
 import { useLanguage } from "@/hooks/useLanguage";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
+import Logo from "@/components/ui/Logo";
 
 export default function Navbar() {
   const { scrollTo } = useLenisScroll();
@@ -46,14 +47,8 @@ export default function Navbar() {
           }}
           className="group flex shrink-0 items-center gap-2.5"
         >
-          <span
-            className="flex h-10 w-10 items-center justify-center rounded-xl text-sm font-bold text-white transition-transform group-hover:scale-110"
-            style={{
-              background: "linear-gradient(135deg, #00d4ff, #a855f7)",
-              boxShadow: "0 4px 16px rgba(0,212,255,0.3), inset 0 1px 0 rgba(255,255,255,0.2)",
-            }}
-          >
-            KS
+          <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl transition-transform group-hover:scale-110" style={{ boxShadow: "0 4px 16px rgba(0,212,255,0.3), inset 0 1px 0 rgba(255,255,255,0.2)" }}>
+            <Logo size={40} priority className="h-full w-full" />
           </span>
           <span className="hidden font-display text-lg font-semibold sm:block">
             {personalInfo.name.split(" ")[0]}

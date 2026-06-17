@@ -12,6 +12,7 @@ export const personalInfo = {
     telegram: "https://t.me/komronsharifov",
   },
   profilePhoto: "/profile.png",
+  logo: "/logo.png",
   stats: [
     { key: "years" as const, value: 5, suffix: "+" },
     { key: "projects" as const, value: 40, suffix: "+" },

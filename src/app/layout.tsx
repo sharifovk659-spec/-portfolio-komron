@@ -24,6 +24,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://komron.inovaauto.com"),
   title: "Komron Sharifov | Full-Stack Web Developer",
   description:
     "Premium developer portfolio of Komron Sharifov — Full-Stack Web Developer crafting modern web platforms.",
@@ -33,6 +34,11 @@ export const metadata: Metadata = {
     title: "Komron Sharifov | Full-Stack Web Developer",
     description: "Premium developer portfolio — modern web platforms with clean code and reliable security.",
     type: "website",
+    images: ["/logo.png"],
+  },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
   },
 };
 
