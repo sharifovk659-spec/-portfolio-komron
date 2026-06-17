@@ -305,6 +305,14 @@
     to { transform: rotate(360deg); }
   }
 
+  .footer-social-icon {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .magnetic-btn {
+    display: inline-flex;
+  }
+
   .btn-premium {
     @apply relative overflow-hidden rounded-2xl bg-gradient-to-r from-neon-blue via-neon-cyan to-neon-purple font-medium text-white;
     box-shadow:

@@ -66,9 +66,9 @@ export default function Navbar() {
             e.preventDefault();
             handleNavClick("#home");
           }}
-          className="group min-w-0 shrink transition-transform group-hover:scale-[1.02]"
+          className="group min-w-0 transition-transform group-hover:scale-[1.02]"
         >
-          <BrandMark size="sm" className="sm:hidden" />
+          <BrandMark size="sm" showText={false} className="sm:hidden" />
           <BrandMark size="md" className="hidden sm:flex" />
         </a>
 
