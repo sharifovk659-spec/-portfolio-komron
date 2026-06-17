@@ -10,7 +10,7 @@ const socialIcons = [
   { href: personalInfo.social.github, icon: FaGithub, label: "GitHub" },
   { href: personalInfo.social.linkedin, icon: FaLinkedin, label: "LinkedIn" },
   { href: personalInfo.social.instagram, icon: FaInstagram, label: "Instagram" },
-];
+] as const;
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -22,8 +22,10 @@ export default function Footer() {
     >
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
         <div className="flex flex-col items-center gap-5 text-center">
-          <BrandMark size="sm" />
-          <div className="flex items-center justify-center gap-3">
+          <BrandMark size="sm" className="sm:hidden" />
+          <BrandMark size="md" className="hidden sm:flex" />
+
+          <div className="flex flex-nowrap items-center justify-center gap-3">
             {socialIcons.map(({ href, icon: Icon, label }) => (
               <motion.a
                 key={label}
@@ -32,12 +34,13 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label={label}
                 whileHover={{ scale: 1.1, y: -2 }}
-                className="premium-card flex h-11 w-11 items-center justify-center !p-0 text-white/55 hover:text-neon-cyan"
+                className="premium-card flex h-11 w-11 shrink-0 items-center justify-center !p-0 text-white/55 hover:text-neon-cyan"
               >
                 <Icon size={18} />
               </motion.a>
             ))}
           </div>
+
           <p className="text-sm text-white/45">
             © {new Date().getFullYear()} {personalInfo.name}. {t.footer.rights}
           </p>

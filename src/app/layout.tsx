@@ -11,6 +11,7 @@ import SectionNav from "@/components/layout/SectionNav";
 import AnimatedBackground from "@/components/ui/AnimatedBackground";
 import MouseGlow from "@/components/effects/MouseGlow";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import MobileScrollArrow from "@/components/ui/MobileScrollArrow";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -63,6 +64,7 @@ export default function RootLayout({
             <main className="relative space-y-2 pb-20 sm:space-y-4 sm:pb-0">{children}</main>
             <Footer />
             <WhatsAppFloat />
+            <MobileScrollArrow />
           </SmoothScroll>
           </MotionProvider>
         </LanguageProvider>

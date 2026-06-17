@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { HiArrowDown, HiDownload } from "react-icons/hi";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { personalInfo } from "@/lib/data";
 import { useLenisScroll } from "@/components/layout/SmoothScroll";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -87,17 +86,6 @@ export default function Hero() {
             <span>{t.hero.downloadCv}</span>
           </MagneticButton>
         </motion.div>
-
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3.8 }} className="mt-10 flex items-center justify-center gap-4">
-          {[personalInfo.social.github, personalInfo.social.linkedin].map((href, i) => {
-            const Icon = i === 0 ? FaGithub : FaLinkedin;
-            return (
-              <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="premium-card flex h-12 w-12 items-center justify-center !p-0 text-white/60 hover:text-neon-cyan">
-                <Icon size={20} />
-              </a>
-            );
-          })}
-        </motion.div>
       </div>
 
       <motion.button
@@ -106,7 +94,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 8, 0] }}
         transition={{ opacity: { delay: 4 }, y: { repeat: Infinity, duration: 2 } }}
-        className="absolute bottom-8 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border border-white/10 text-white/40 backdrop-blur-xl hover:text-neon-blue"
+        className="absolute bottom-8 left-1/2 hidden h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border border-white/10 text-white/40 backdrop-blur-xl hover:text-neon-blue sm:flex"
         aria-label={t.hero.scrollDown}
       >
         <HiArrowDown size={20} />
