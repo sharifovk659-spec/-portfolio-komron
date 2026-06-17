@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { HiArrowDown, HiArrowUp } from "react-icons/hi";
 import { useLenisScroll } from "@/components/layout/SmoothScroll";
@@ -35,10 +36,22 @@ export default function MobileScrollArrow() {
   if (!isMobile) return null;
 
   return (
-    <button
+    <motion.button
       type="button"
       onClick={() => scrollTo(atBottom ? "#home" : "#contact")}
       aria-label={atBottom ? "Scroll to top" : "Scroll down"}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+        y: atBottom ? [0, -6, 0] : [0, 6, 0],
+      }}
+      transition={{
+        opacity: { duration: 0.4 },
+        scale: { duration: 0.4 },
+        y: { repeat: Infinity, duration: 1.8, ease: "easeInOut" },
+      }}
+      whileTap={{ scale: 0.92 }}
       className="fixed right-4 bottom-24 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/70 backdrop-blur-xl transition-colors hover:border-neon-blue/40 hover:text-neon-cyan"
       style={{
         background: "rgba(10, 12, 24, 0.9)",
@@ -46,7 +59,18 @@ export default function MobileScrollArrow() {
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
     >
-      {atBottom ? <HiArrowUp size={22} /> : <HiArrowDown size={22} />}
-    </button>
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={atBottom ? "up" : "down"}
+          initial={{ opacity: 0, rotate: atBottom ? -90 : 90 }}
+          animate={{ opacity: 1, rotate: 0 }}
+          exit={{ opacity: 0, rotate: atBottom ? 90 : -90 }}
+          transition={{ duration: 0.25 }}
+          className="flex items-center justify-center"
+        >
+          {atBottom ? <HiArrowUp size={22} /> : <HiArrowDown size={22} />}
+        </motion.span>
+      </AnimatePresence>
+    </motion.button>
   );
 }

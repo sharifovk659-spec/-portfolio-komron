@@ -16,13 +16,6 @@ export default function Navbar() {
     return subscribeScroll((scrollY) => {
       setScrolled(scrollY > 50);
 
-      const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-      if (!isDesktop) {
-        setVisible(true);
-        lastScrollY.current = scrollY;
-        return;
-      }
-
       if (scrollY < 80) {
         setVisible(true);
       } else if (scrollY > lastScrollY.current + 8) {
