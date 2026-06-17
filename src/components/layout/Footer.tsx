@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter, FaTelegramPlane } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { personalInfo } from "@/lib/data";
 import { useLanguage } from "@/hooks/useLanguage";
 import BrandMark from "@/components/ui/BrandMark";
@@ -9,8 +9,7 @@ import BrandMark from "@/components/ui/BrandMark";
 const socialIcons = [
   { href: personalInfo.social.github, icon: FaGithub, label: "GitHub" },
   { href: personalInfo.social.linkedin, icon: FaLinkedin, label: "LinkedIn" },
-  { href: personalInfo.social.twitter, icon: FaTwitter, label: "Twitter" },
-  { href: personalInfo.social.telegram, icon: FaTelegramPlane, label: "Telegram" },
+  { href: personalInfo.social.instagram, icon: FaInstagram, label: "Instagram" },
 ];
 
 export default function Footer() {

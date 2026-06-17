@@ -3,13 +3,11 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLenisScroll } from "@/components/layout/SmoothScroll";
-import { useLanguage } from "@/hooks/useLanguage";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
 import BrandMark from "@/components/ui/BrandMark";
 
 export default function Navbar() {
   const { scrollTo } = useLenisScroll();
-  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -55,17 +53,6 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
-          <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick("#contact");
-            }}
-            className="btn-premium shrink-0 rounded-full px-4 py-2 text-xs font-semibold sm:px-5 sm:py-2.5 sm:text-sm"
-          >
-            <span className="hidden min-[420px]:inline">{t.nav.hireMe}</span>
-            <span className="min-[420px]:hidden">{t.nav.hireMeShort}</span>
-          </a>
         </div>
       </nav>
     </motion.header>

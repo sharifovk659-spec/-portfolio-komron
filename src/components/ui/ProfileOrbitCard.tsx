@@ -1,10 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { HiCalendar, HiFolder, HiCode } from "react-icons/hi";
 import { SiPhp, SiJavascript, SiMysql, SiReact } from "react-icons/si";
 import { personalInfo } from "@/lib/data";
-import { useLanguage } from "@/hooks/useLanguage";
 import { useMotionPrefs } from "@/hooks/useMotionPrefs";
 
 const ORBIT_DURATION = 28;
@@ -18,14 +16,7 @@ const orbitSkills = [
 
 const skillTags = ["PHP 8", "MySQL", "JavaScript", "HTML / CSS", "UI/UX"];
 
-const cardStats = [
-  { value: "5+", labelKey: "years" as const, Icon: HiCalendar },
-  { value: "20+", labelKey: "projects" as const, Icon: HiFolder },
-  { value: "50K+", labelKey: "codeLines" as const, Icon: HiCode },
-];
-
 export default function ProfileOrbitCard() {
-  const { t } = useLanguage();
   const { reducedMotion, isMobile } = useMotionPrefs();
   const animate = !reducedMotion;
   const orbitRadius = isMobile ? 100 : 132;
@@ -112,6 +103,7 @@ export default function ProfileOrbitCard() {
               className="object-cover object-top"
               sizes="160px"
               priority
+              unoptimized
             />
           </div>
         </div>
@@ -132,18 +124,6 @@ export default function ProfileOrbitCard() {
             <span className="h-1.5 w-1.5 rounded-full bg-neon-cyan shadow-[0_0_6px_rgba(0,255,245,0.8)]" />
             {tag}
           </span>
-        ))}
-      </div>
-
-      <div className="relative mt-6 grid grid-cols-3 gap-2 border-t border-white/[0.06] pt-5">
-        {cardStats.map(({ value, labelKey, Icon }) => (
-          <div key={labelKey} className="flex flex-col items-center gap-1.5 text-center">
-            <Icon className="text-neon-cyan/80" size={18} />
-            <span className="font-display text-lg font-bold text-white sm:text-xl">{value}</span>
-            <span className="text-[10px] leading-tight text-white/50 sm:text-[11px]">
-              {t.about.cardStats[labelKey]}
-            </span>
-          </div>
         ))}
       </div>
     </div>

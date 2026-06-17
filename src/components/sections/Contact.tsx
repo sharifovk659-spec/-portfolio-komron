@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { HiMail, HiLocationMarker, HiPaperAirplane } from "react-icons/hi";
-import { FaGithub, FaLinkedin, FaTwitter, FaTelegramPlane } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import GlassCard from "@/components/ui/GlassCard";
@@ -13,8 +13,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 const socialLinks = [
   { href: personalInfo.social.github, icon: FaGithub, label: "GitHub" },
   { href: personalInfo.social.linkedin, icon: FaLinkedin, label: "LinkedIn" },
-  { href: personalInfo.social.twitter, icon: FaTwitter, label: "Twitter" },
-  { href: personalInfo.social.telegram, icon: FaTelegramPlane, label: "Telegram" },
+  { href: personalInfo.social.instagram, icon: FaInstagram, label: "Instagram" },
 ];
 
 export default function Contact() {
@@ -46,7 +45,7 @@ export default function Contact() {
               </div>
               <div className="flex items-center gap-3 text-sm text-white/70">
                 <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neon-purple/10"><HiLocationMarker className="text-neon-purple" size={18} /></div>
-                {t.personal.location}
+                {personalInfo.location}
               </div>
             </div>
             <div className="mt-8">

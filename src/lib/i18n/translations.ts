@@ -32,7 +32,7 @@ const en = {
     testimonials: "Reviews",
     contact: "Contact",
   },
-  preloader: { loading: "Loading", loadingExperience: "Loading experience..." },
+  preloader: { loading: "Loading" },
   hero: {
     availability: "Available for Freelance & Full-Time Projects",
     viewWork: "View My Work",
@@ -137,7 +137,7 @@ const en = {
   personal: {
     title: "Full-Stack Web Developer",
     tagline: "Building modern web platforms with clean code, high speed, and reliable security.",
-    location: "Tashkent, Uzbekistan",
+    location: "Dushanbe, Tajikistan",
   },
 };
 
@@ -165,7 +165,7 @@ const ru: TranslationKeys = {
     testimonials: "Отзывы",
     contact: "Контакты",
   },
-  preloader: { loading: "Загрузка", loadingExperience: "Загрузка сайта..." },
+  preloader: { loading: "Загрузка" },
   hero: {
     availability: "Доступен для freelance и full-time проектов",
     viewWork: "Мои работы",
@@ -270,7 +270,7 @@ const ru: TranslationKeys = {
   personal: {
     title: "Full-Stack Web Developer",
     tagline: "Создание современных веб-платформ с чистым кодом, высокой скоростью и надёжной безопасностью.",
-    location: "Ташкент, Узбекистан",
+    location: "Душанбе, Таджикистан",
   },
 };
 
@@ -298,7 +298,7 @@ const tg: TranslationKeys = {
     testimonials: "Шарҳҳо",
     contact: "Тамос",
   },
-  preloader: { loading: "Бор шуда истодааст", loadingExperience: "Сайт бор мешавад..." },
+  preloader: { loading: "Бор шуда истодааст" },
   hero: {
     availability: "Дастрас барои Freelance ва Full-Time лоиҳаҳо",
     viewWork: "Кори ман",
@@ -403,7 +403,7 @@ const tg: TranslationKeys = {
   personal: {
     title: "Full-Stack Web Developer",
     tagline: "Сохтани веб-платформаҳои муосир бо коди тоза, суръати баланд ва амнияти боэътимод.",
-    location: "Тошканд, Ӯзбекистон",
+    location: "Душанбе, Тоҷикистон",
   },
 };
 

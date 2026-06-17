@@ -3,18 +3,52 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HiLocationMarker, HiMail, HiLightningBolt, HiUserGroup, HiSearch } from "react-icons/hi";
-import { FaBullseye } from "react-icons/fa";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { HiLocationMarker, HiMail } from "react-icons/hi";
+import { SiPhp, SiJavascript, SiMysql, SiReact } from "react-icons/si";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import GlassCard from "@/components/ui/GlassCard";
-import ProfileOrbitCard from "@/components/ui/ProfileOrbitCard";
 import { personalInfo } from "@/lib/data";
 import { useLanguage } from "@/hooks/useLanguage";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const traitIcons = [FaBullseye, HiUserGroup, HiLightningBolt, HiSearch];
+const orbitApps = [
+  {
+    id: "mysql",
+    Icon: SiMysql,
+    color: "#4479A1",
+    position: "absolute -top-3 -left-3",
+    iconSize: 50,
+    duration: 18,
+  },
+  {
+    id: "php",
+    Icon: SiPhp,
+    color: "#8892BF",
+    position: "absolute -top-3 -right-3",
+    iconSize: 52,
+    duration: 20,
+  },
+  {
+    id: "js",
+    Icon: SiJavascript,
+    color: "#F7DF1E",
+    position: "absolute -bottom-3 -left-3",
+    iconSize: 50,
+    duration: 15,
+  },
+  {
+    id: "react",
+    Icon: SiReact,
+    color: "#61DAFB",
+    position: "absolute -bottom-3 -right-3",
+    iconSize: 52,
+    duration: 22,
+  },
+] as const;
 
 export default function About() {
   const { t } = useLanguage();
@@ -48,8 +82,45 @@ export default function About() {
       <SectionHeading subtitle={t.about.subtitle} title={t.about.title} description={t.about.description} />
 
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-        <div ref={imageRef} className="flex justify-center lg:justify-start">
-          <ProfileOrbitCard />
+        <div ref={imageRef} className="relative mx-auto w-full max-w-md lg:mx-0">
+          <div className="gradient-border glow-blue relative aspect-square overflow-hidden rounded-3xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/25 via-dark-700 to-neon-purple/25" />
+            <div className="absolute inset-0 flex items-center justify-center p-8">
+              <div
+                className="relative h-[186px] w-[186px] overflow-hidden rounded-full sm:h-[218px] sm:w-[218px]"
+                style={{
+                  boxShadow:
+                    "0 0 0 3px rgba(0, 212, 255, 0.5), 0 0 30px rgba(0, 212, 255, 0.35), 0 0 60px rgba(0, 212, 255, 0.15)",
+                }}
+              >
+                <Image
+                  src={personalInfo.profilePhoto}
+                  alt={personalInfo.name}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 640px) 186px, 218px"
+                  priority
+                  unoptimized
+                />
+              </div>
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-dark-950/90 via-transparent to-transparent" />
+          </div>
+
+          {orbitApps.map(({ id, Icon, color, position, iconSize, duration }) => (
+            <div
+              key={id}
+              className={`${position} flex h-[68px] w-[68px] items-center justify-center rounded-full border-2 border-dashed border-neon-blue/50 bg-dark-900/90`}
+            >
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration, repeat: Infinity, ease: "linear" }}
+                className="flex items-center justify-center"
+              >
+                <Icon size={iconSize} style={{ color }} />
+              </motion.div>
+            </div>
+          ))}
         </div>
 
         <div ref={contentRef} className="space-y-6">
@@ -58,7 +129,7 @@ export default function About() {
 
           <div className="flex flex-wrap gap-4 pt-2">
             {[
-              { icon: HiLocationMarker, text: t.personal.location },
+              { icon: HiLocationMarker, text: personalInfo.location },
               { icon: HiMail, text: personalInfo.email },
             ].map(({ icon: Icon, text }) => (
               <div
@@ -73,17 +144,11 @@ export default function About() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 pt-2 sm:gap-4">
-            {t.about.traits.map((trait, i) => {
-              const Icon = traitIcons[i];
-              return (
-                <GlassCard key={trait} delay={i * 0.1} className="!p-4">
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <Icon className="text-neon-cyan" size={20} />
-                    <span className="text-sm font-medium text-white/85">{trait}</span>
-                  </div>
-                </GlassCard>
-              );
-            })}
+            {t.about.traits.map((trait, i) => (
+              <GlassCard key={trait} delay={i * 0.1} className="!p-4 text-center">
+                <span className="text-sm font-medium text-white/85">{trait}</span>
+              </GlassCard>
+            ))}
           </div>
         </div>
       </div>
